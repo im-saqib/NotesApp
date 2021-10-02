@@ -10,19 +10,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  goalInputBox: {
+  heading: {
+    alignItems: "center",
+  },
+  headingText: {
+    fontSize: 30,
+    fontWeight: "700",
+    color: "#A2416B",
+  },
+  noteInputBox: {
     paddingTop: 5,
     width: "80%",
     borderBottomColor: "black",
     borderBottomWidth: 1,
   },
-  goals: {
+  notes: {
     backgroundColor: "#A2416B",
     alignItems: "center",
     marginVertical: 5,
     paddingVertical: 5,
   },
-  goalsFont: {
+  notesFont: {
     fontSize: 20,
     color: "#fff",
   },

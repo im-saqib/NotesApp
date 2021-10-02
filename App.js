@@ -1,46 +1,40 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  ScrollView,
-  FlatList,
-} from "react-native";
+import { Text, View, FlatList } from "react-native";
+
+import NotesItem from "./components/NotesItem";
+import NotesInput from "./components/NotesInput";
 
 import styles from "./styles";
 let i = 0;
 
 export default function App() {
-  const [enteredGoal, setEnteredGoal] = useState("");
-  const [courseGoals, setCourseGoals] = useState([]);
-  function goalInputHandler(enteredText) {
-    setEnteredGoal(enteredText);
+  const [enteredNote, setEnteredNote] = useState("");
+  const [courseNotes, setCourseNotes] = useState([]);
+  function noteInputHandler(enteredText) {
+    setEnteredNote(enteredText);
   }
-  const addGoalHandler = () => {
-    // console.log(courseGoals);
+  const addNoteHandler = () => {
+    setCourseNotes([...courseNotes, { key: i.toString(), value: enteredNote }]);
     i++;
-    setCourseGoals([...courseGoals, { key: i.toString(), value: enteredGoal }]);
+  };
+  const removeNote = (index) => {
+    const ar = courseNotes.filter((ele) => ele.key != index);
+    setCourseNotes(ar);
   };
   return (
     <View style={styles.root}>
-      <Text>Enter Your Goal</Text>
-      <View style={styles.container}>
-        <TextInput
-          placeholder='Dream on...'
-          style={styles.goalInputBox}
-          onChangeText={goalInputHandler}
-        />
-        <Button title='Add' onPress={addGoalHandler} />
+      <View style={styles.heading}>
+        <Text style={styles.headingText}>Notes</Text>
       </View>
+      <NotesInput
+        noteInputHandler={noteInputHandler}
+        addNoteHandler={addNoteHandler}
+      />
       <FlatList
-        data={courseGoals}
+        data={courseNotes}
         renderItem={(itemData) => (
-          <View style={styles.goals}>
-            <Text style={styles.goalsFont}>{itemData.item.value}</Text>
-          </View>
+          <NotesItem itemData={itemData} removeNote={removeNote} />
         )}
       />
     </View>

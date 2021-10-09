@@ -6,12 +6,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
   },
   heading: {
     alignItems: "center",
+    borderBottomWidth: 2,
+    marginBottom: 10,
+    borderBottomColor: "blue",
   },
   headingText: {
     fontSize: 30,
@@ -33,6 +36,12 @@ const styles = StyleSheet.create({
   notesFont: {
     fontSize: 20,
     color: "#fff",
+  },
+  addCloseBtn: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    width: "60%",
   },
 });
 
